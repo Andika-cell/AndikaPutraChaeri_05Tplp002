@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Penjualan</title>
+    <link rel="stylesheet" href="dash.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <li><a href="#" onclick="showPage('dashboard')">Dashboard</a></li>
+            <h2>Menu Karyawan</h2>
+            <ul>
+                <li><a href="#" onclick="showPage('penjualan')">Karyawan</a></li>
+                <li><a href="#" onclick="showPage('jabatan')">Jabatan</a></li>
+                <li><a href="#" onclick="showPage('divisi')">Divisi</a></li>
+
+                <li><a href="#" onclick="showPage('laporan')"></a></li>
+                <li><a href="#">Pengaturan</a></li>
+                <h2>Menu Absensi</h2>
+                <li><a href="#" onclick="showPage('absensi')">Absensi</a></li>
+                <li><a href="#" onclick="showPage('izin')">Izin</a></li>
+                <li><a href="#" onclick="showPage('lembur')">Lembur</a></li>
+                <li><a href="#" onclick="showPage('laporan')"></a></li>
+                <h2>Menu Pengajuan</h2>
+                <li><a href="#" onclick="showPage('penjualan')">Slip Gaji</a></li>
+            </ul>
+            
+        </nav>
+
+      
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <button id="menu-toggle" class="menu-toggle">☰</button>
+            
+            <!-- Dashboard Page -->
+            <section id="dashboard" class="page active">
+                <header>
+                    <h1>Dashboard Penjualan</h1>
+                </header>
+                
+                <!-- Insight Section -->
+                <section class="insight-section">
+                    <div class="insight-box">
+                        <h3>Total Penjualan</h3>
+                        <p id="totalPenjualan">Rp. 0</p>
+                    </div>
+                    <div class="insight-box">
+                        <h3>Rata-rata Penjualan</h3>
+                        <p id="rataRataPenjualan">Rp. 0</p>
+                    </div>
+                    <div class="insight-box">
+                        <h3>Penjualan Tertinggi</h3>
+                        <p id="penjualanTertinggi">0  produk</p>
+                    </div>
+                </section>
+
+                <!-- Chart Section -->
+                <div class="chart-container">
+                    <canvas id="penjualanChart"></canvas>
+                </div>
+
+                <!-- Chart Stok Produk -->
+                <div class="chart-container">
+                    <canvas id="stokProdukChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Penjualan Page -->
+            <section id="penjualan" class="page">
+                <header>
+                    <h1>Daftar Karyawan</h1>
+                </header>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Alamat</th>
+                            <th>Jabatan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>K001</td>
+                            <td>Yovan fiqri</td>
+                            <td>yf@gmail.com</td>
+                            <td>Jakarta</td>
+                            <td>Staf</td>
+                            <td></td>
+                        </tr>
+                        <tr>  <td>2</td>
+                            <td>K002</td>
+                            <td>Renate nindya</td>
+                            <td>ren@gmail.com</td>
+                            <td>Bandung</td>
+                            <td>Kepala Bagian</td>
+                            <td></td>
+                        </tr>
+
+                        <tr>  <td>3</td>
+                            <td>K003</td>
+                            <td>Nurachman</td>
+                            <td>Nur@gmail.com</td>
+                            <td>Solo</td>
+                            <td>Staf</td>
+                            <td></td>
+                        </tr>
+                        <!-- Tambahkan data lain sesuai kebutuhan -->
+                    </tbody>
+                </table>
+            </section>
+
+
+        
+
+            <!-- Produk Page -->
+            <section id="produk" class="page">
+                <header>
+                    <h1>Daftar Jabatan</h1>
+                </header>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Produk</th>
+                            <th>Nama Produk</th>
+                            <th>Harga</th>
+                            <th>Stok</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Produk A</td>
+                            <td>Rp. 100.000</td>
+                            <td>50</td>
+                        </tr>
+                        <!-- Tambahkan data lain sesuai kebutuhan -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="jabatan" class="page">
+                <header>
+                    <h1>Data Jabatan</h1>
+                </header>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode jabatan</th>
+                            <th>Jabatan</th>
+                          
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>JAB001</td>
+                            <td>Kepala Bagian</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>JAB002</td>
+                            <td>Kepala Sub Bagian</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>JAB003</td>
+                            <td>Staff</td>
+                            <td></td>
+                        </tr>
+
+
+
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="divisi" class="page">
+                <header>
+                    <h1>Data Divisi</h1>
+                </header>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Kode DIvisi</th>
+                            <th>Nama DIvisi</th>
+                          
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>DIV001</td>
+                            <td>Umum</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>DIV002</td>
+                            <td>BAUK</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>DIV003</td>
+                            <td>BAA</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>DIV004</td>
+                            <td>IT</td>
+                            <td></td>
+                        </tr>
+
+
+
+
+                    </tbody>
+                </table>
+            </section>
+
+                        <section id="absensi" class="page">
+                            <header>
+                                <h1>Daftar Hadir Karyawan</h1>
+                            </header>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Karyawan</th>
+                                        <th>Tanggal</th>
+                                        <th>Lokasi Absen</th>
+                                        <th>Jam Masuk</th>
+                                        <th>Jam Keluar</th>
+                                      
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Ahmad Febri</td>
+                                        <td>2023-05-10</td>
+                                        <td>Kampus Kimia</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Yovan fiqri</td>
+                                        <td>2023-05-10</td>
+                                        <td>Unpam viktor</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>fiqri</td>
+                                        <td>2023-05-09</td>
+                                        <td>Unpam viktor</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Yovan</td>
+                                        <td>2023-05-04</td>
+                                        <td>Unpam viktor</td>
+                                    </tr>
+
+
+                                    
+                    </tbody>
+                </table>
+            </section>
+
+
+
+                                    <section id="izin" class="page">
+                                        <header>
+                                            <h1>Daftar Penjualan</h1>
+                                        </header>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama</th>
+                                                    <th>Izin</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Jam</th>
+                                                    <th>Keterangan</th>
+                                                    <th>Keterangan</th>
+                                                  
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Produk A</td>
+                                                    <td>10</td>
+                                                    <td>01/10/2024</td>
+                                                </tr>
+            
+                                            </tbody>
+                                        </table>
+                                    </section>
+                                    <section id="lembur" class="page">
+                                        <header>
+                                            <h1>Daftar Penjualan</h1>
+                                        </header>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Kode jabatan</th>
+                                                    <th>Jabatan</th>
+                                                  
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Produk A</td>
+                                                    <td>10</td>
+                                                    <td>01/10/2024</td>
+                                                </tr>
+                        
+                                            </tbody>
+                                        </table>
+                                    </section>                        
+            <!-- Laporan Page -->
+            <section id="laporan" class="page">
+                <header>
+                    <h1>Laporan Penjualan</h1>
+                </header>
+                <p>Laporan bulanan penjualan dari Januari hingga Desember 2024. Silakan unduh laporan untuk detail lebih lanjut.</p>
+                <button onclick="downloadLaporan()">Unduh Laporan</button>
+            </section>
+        </div>
+    </div>
+
+    <script src="dash.js"></script>
+</body>
+</html>
