@@ -1,356 +1,368 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistem Informasi Manajemen Karyawan</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            width: 370px;
+            background-color: #007bff;
+            color: white;
+            min-height: 100vh;
+            position: fixed;
+        }
+        .sidebar h2, .sidebar p {
+            padding-left: 1rem;
+        }
+        .sidebar a {
+            color: white;
+            padding: 15px;
+            display: block;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #007bff;
+        }
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: block;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+        }
+        .stat-box {
+            background-color: #0a881f;
+            color: white;
+            padding: 20px;
+            border-radius: 30px;
+            width: 35%;
+            text-align: center;
+        }
+        .stat-box h3 {
+            margin-bottom: 10px;
+        }
+        .content {
+            margin-left: 460px;
+            padding: 20px;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .table-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        .form-container {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Penjualan</title>
-    <link rel="stylesheet" href="dash.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <div class="dashboard-wrapper">
-        <!-- Sidebar -->
-        <nav class="sidebar" id="sidebar">
-            <li><a href="#" onclick="showPage('dashboard')">Dashboard</a></li>
-            <h2>Menu Karyawan</h2>
-            <ul>
-                <li><a href="#" onclick="showPage('penjualan')">Karyawan</a></li>
-                <li><a href="#" onclick="showPage('jabatan')">Jabatan</a></li>
-                <li><a href="#" onclick="showPage('divisi')">Divisi</a></li>
+    <title>Dashboard - Sistem Informasi Manajemen Karyawan</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            width: 370px;
+            background-color: #007bff;
+            color: white;
+            min-height: 100vh;
+            position: fixed;
+        }
+        .sidebar h2, .sidebar p {
+            padding-left: 1rem;
+        }
+        .sidebar a {
+            color: white;
+            padding: 15px;
+            display: block;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #007bff;
+        }
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: block;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+        }
+        .stat-box {
+            background-color: #1625ac;
+            color: white;
+            padding: 20px;
+            border-radius: 30px;
+            width: 35%;
+            text-align: center;
+        }
+        .stat-box h3 {
+            margin-bottom: 10px;
+        }
+        .content {
+            margin-left: 460px;
+            padding: 20px;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .table-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        .form-container {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head><body>
 
-                <li><a href="#" onclick="showPage('laporan')"></a></li>
-                <li><a href="#">Pengaturan</a></li>
-                <h2>Menu Absensi</h2>
-                <li><a href="#" onclick="showPage('absensi')">Absensi</a></li>
-                <li><a href="#" onclick="showPage('izin')">Izin</a></li>
-                <li><a href="#" onclick="showPage('lembur')">Lembur</a></li>
-                <li><a href="#" onclick="showPage('laporan')"></a></li>
-                <h2>Menu Pengajuan</h2>
-                <li><a href="#" onclick="showPage('penjualan')">Slip Gaji</a></li>
-            </ul>
-            
-        </nav>
+<div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>ANDIK GROUP</h2>
+        <im sr="img/profile-photo.jp" alt="Profile Photo" class="profile-photo">
+        <p></p>
+        <h6 class="text-uppercase px-3 mt-4">Administrator</h6>
+        <a href="#" onclick="showMenu('dashboard')">Dashboard</a>
+        <h6 class="text-uppercase px-3 mt-4">Menu Karyawan</h6>
+        <a href="#" onclick="showMenu('karyawan')">Karyawan</a>
+        <a href="#" onclick="showMenu('jabatan')">Jabatan</a>
+        <a href="#" onclick="showMenu('divisi')">Divisi</a>
+        <h6 class="text-uppercase px-3 mt-4">Menu Absensi</h6>
+        <a href="#" onclick="showMenu('absensi')">Absensi</a>
+        <a href="#" onclick="showMenu('izin')">Izin</a>
+        <a href="#" onclick="showMenu('lembur')">Lembur</a>
+        <h6 class="text-uppercase px-3 mt-4">Menu Penggajian</h6>
+        <a href="#" onclick="showMenu('slipgaji')">Slip Gaji</a>
+        <h6 class="text-uppercase px-3 mt-4">Menu Pengguna</h6>
+        <a href="#" onclick="showMenu('pengguna')">Pengguna</a>
+    </div>
 
-      
+    <!-- Content Area -->
+    <div class="content">
+        <div class="header">
+            <h3>Sistem Informasi Manajemen Karyawan</h3>
+        </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <button id="menu-toggle" class="menu-toggle">☰</button>
-            
-            <!-- Dashboard Page -->
-            <section id="dashboard" class="page active">
-                <header>
-                    <h1>Dashboard Penjualan</h1>
-                </header>
-                
-                <!-- Insight Section -->
-                <section class="insight-section">
-                    <div class="insight-box">
-                        <h3>Total Penjualan</h3>
-                        <p id="totalPenjualan">Rp. 0</p>
-                    </div>
-                    <div class="insight-box">
-                        <h3>Rata-rata Penjualan</h3>
-                        <p id="rataRataPenjualan">Rp. 0</p>
-                    </div>
-                    <div class="insight-box">
-                        <h3>Penjualan Tertinggi</h3>
-                        <p id="penjualanTertinggi">0  produk</p>
-                    </div>
-                </section>
+         <!-- Dashboard -->
+    <div id="dashboard" class="menu dashboard-container" style="display: none;">
+        <!-- Jumlah Karyawan Card -->
+        <div class="stat-box">
+            <h3>Jumlah Karyawan</h3>
+            <p>150</p>
+            <small>Orang</small>
+        </div>
 
-                <!-- Chart Section -->
-                <div class="chart-container">
-                    <canvas id="penjualanChart"></canvas>
-                </div>
+        <!-- Jabatan Card -->
+        <div class="stat-box">
+            <h3>Jabatan</h3>
+            <p>10</p>
+            <small>Jenis</small>
+        </div>
 
-                <!-- Chart Stok Produk -->
-                <div class="chart-container">
-                    <canvas id="stokProdukChart"></canvas>
-                </div>
-            </section>
+        <!-- Divisi Card -->
+        <div class="stat-box">
+            <h3>Divisi</h3>
+            <p>5</p>
+            <small>Departemen</small>
+        </div>
 
-            <!-- Penjualan Page -->
-            <section id="penjualan" class="page">
-                <header>
-                    <h1>Daftar Karyawan</h1>
-                </header>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kode</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>Alamat</th>
-                            <th>Jabatan</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>K001</td>
-                            <td>Yovan fiqri</td>
-                            <td>yf@gmail.com</td>
-                            <td>Jakarta</td>
-                            <td>Staf</td>
-                            <td></td>
-                        </tr>
-                        <tr>  <td>2</td>
-                            <td>K002</td>
-                            <td>Renate nindya</td>
-                            <td>ren@gmail.com</td>
-                            <td>Bandung</td>
-                            <td>Kepala Bagian</td>
-                            <td></td>
-                        </tr>
+        <!-- Absensi Card -->
+        <div class="stat-box">
+            <h3>Absensi Hari Ini</h3>
+            <p>135</p>
+            <small>Hadir</small>
+        </div>
 
-                        <tr>  <td>3</td>
-                            <td>K003</td>
-                            <td>Nurachman</td>
-                            <td>Nur@gmail.com</td>
-                            <td>Solo</td>
-                            <td>Staf</td>
-                            <td></td>
-                        </tr>
-                        <!-- Tambahkan data lain sesuai kebutuhan -->
-                    </tbody>
-                </table>
-            </section>
-
-
-        
-
-            <!-- Produk Page -->
-            <section id="produk" class="page">
-                <header>
-                    <h1>Daftar Jabatan</h1>
-                </header>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID Produk</th>
-                            <th>Nama Produk</th>
-                            <th>Harga</th>
-                            <th>Stok</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Produk A</td>
-                            <td>Rp. 100.000</td>
-                            <td>50</td>
-                        </tr>
-                        <!-- Tambahkan data lain sesuai kebutuhan -->
-                    </tbody>
-                </table>
-            </section>
-
-            <section id="jabatan" class="page">
-                <header>
-                    <h1>Data Jabatan</h1>
-                </header>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kode jabatan</th>
-                            <th>Jabatan</th>
-                          
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>JAB001</td>
-                            <td>Kepala Bagian</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>JAB002</td>
-                            <td>Kepala Sub Bagian</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>JAB003</td>
-                            <td>Staff</td>
-                            <td></td>
-                        </tr>
-
-
-
-                    </tbody>
-                </table>
-            </section>
-
-            <section id="divisi" class="page">
-                <header>
-                    <h1>Data Divisi</h1>
-                </header>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kode DIvisi</th>
-                            <th>Nama DIvisi</th>
-                          
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>DIV001</td>
-                            <td>Umum</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>DIV002</td>
-                            <td>BAUK</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>DIV003</td>
-                            <td>BAA</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>DIV004</td>
-                            <td>IT</td>
-                            <td></td>
-                        </tr>
-
-
-
-
-                    </tbody>
-                </table>
-            </section>
-
-                        <section id="absensi" class="page">
-                            <header>
-                                <h1>Daftar Hadir Karyawan</h1>
-                            </header>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Karyawan</th>
-                                        <th>Tanggal</th>
-                                        <th>Lokasi Absen</th>
-                                        <th>Jam Masuk</th>
-                                        <th>Jam Keluar</th>
-                                      
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Ahmad Febri</td>
-                                        <td>2023-05-10</td>
-                                        <td>Kampus Kimia</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Yovan fiqri</td>
-                                        <td>2023-05-10</td>
-                                        <td>Unpam viktor</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>fiqri</td>
-                                        <td>2023-05-09</td>
-                                        <td>Unpam viktor</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Yovan</td>
-                                        <td>2023-05-04</td>
-                                        <td>Unpam viktor</td>
-                                    </tr>
-
-
-                                    
-                    </tbody>
-                </table>
-            </section>
-
-
-
-                                    <section id="izin" class="page">
-                                        <header>
-                                            <h1>Daftar Penjualan</h1>
-                                        </header>
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Nama</th>
-                                                    <th>Izin</th>
-                                                    <th>Tanggal</th>
-                                                    <th>Jam</th>
-                                                    <th>Keterangan</th>
-                                                    <th>Keterangan</th>
-                                                  
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Produk A</td>
-                                                    <td>10</td>
-                                                    <td>01/10/2024</td>
-                                                </tr>
-            
-                                            </tbody>
-                                        </table>
-                                    </section>
-                                    <section id="lembur" class="page">
-                                        <header>
-                                            <h1>Daftar Penjualan</h1>
-                                        </header>
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Kode jabatan</th>
-                                                    <th>Jabatan</th>
-                                                  
-                                                    <th>Aksi</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Produk A</td>
-                                                    <td>10</td>
-                                                    <td>01/10/2024</td>
-                                                </tr>
-                        
-                                            </tbody>
-                                        </table>
-                                    </section>                        
-            <!-- Laporan Page -->
-            <section id="laporan" class="page">
-                <header>
-                    <h1>Laporan Penjualan</h1>
-                </header>
-                <p>Laporan bulanan penjualan dari Januari hingga Desember 2024. Silakan unduh laporan untuk detail lebih lanjut.</p>
-                <button onclick="downloadLaporan()">Unduh Laporan</button>
-            </section>
+        <!-- Lembur Card -->
+        <div class="stat-box">
+            <h3>Total Lembur</h3>
+            <p>25</p>
+            <small>Jam</small>
         </div>
     </div>
 
-    <script src="dash.js"></script>
-</body>
-</html>
+
+        <!-- Karyawan Form and Table -->
+        <div id="karyawan" class="menu" style="display: none;">
+            <h3>Data Karyawan</h3>
+            <div class="table-container">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID Karyawan</th>
+                            <th>Nama</th>
+                            <th>Jabatan</th>
+                            <th>Divisi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>001</td><td>Ahmad</td><td>Manager</td><td>Keuangan</td><td><button class="btn btn-sm btn-info">Edit</button> <button class="btn btn-sm btn-danger">Hapus</button></td></tr>
+                        <tr><td>002</td><td>Budi</td><td>Staff</td><td>IT</td><td><button class="btn btn-sm btn-info">Edit</button> <button class="btn btn-sm btn-danger">Hapus</button></td></tr>
+                        <tr><td>003</td><td>Ramadhan</td><td>Supervisor</td><td>Pemasaran</td><td><button class="btn btn-sm btn-info">Edit</button> <button class="btn btn-sm btn-danger">Hapus</button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Jabatan Table -->
+         <div id="jabatan" class="menu" style="display: none;">
+            <h3>Data Jabatan</h3>
+            <div class="table-container">
+                <button class="btn btn-primary mb-3">+ Tambah Jabatan</button>
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>No</th>
+                            <th>Kode Jabatan</th>
+                            <th>Jabatan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>JAB001</td><td>Kepala Bagian</td><td><button class="btn btn-sm btn-info">Edit</button> <button class="btn btn-sm btn-danger">Hapus</button></td></tr>
+                        <tr><td>2</td><td>JAB002</td><td>Kepala Sub Bagian</td><td><button class="btn btn-sm btn-info">Edit</button> <button class="btn btn-sm btn-danger">Hapus</button></td></tr>
+                        <tr><td>3</td><td>JAB003</td><td>Staff</td><td><button class="btn btn-sm btn-info">Edit</button> <button class="btn btn-sm btn-danger">Hapus</button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+         </div>
+
+        <!-- Divisi Table -->
+        <div id="divisi" class="menu" style="display: block;">
+            <h3>Data Divisi</h3>
+            <div class="table-container">
+                <button class="btn btn-primary mb-3">+ Tambah Divisi</button>
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>No</th>
+                            <th>Kode Divisi</th>
+                            <th>Divisi</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>DIV001</td><td>Keuangan</td><td><button class="btn btn-sm btn-info">Edit</button> <button class="btn btn-sm btn-danger">Hapus</button></td></tr>
+                        <tr><td>2</td><td>DIV002</td><td>IT</td><td><button class="btn btn-sm btn-info">Edit</button> <button class="btn btn-sm btn-danger">Hapus</button></td></tr>
+                        <tr><td>3</td><td>DIV003</td><td>Pemasaran</td><td><button class="btn btn-sm btn-info">Edit</button> <button class="btn btn-sm btn-danger">Hapus</button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Absensi Table -->
+        <div id="absensi" class="menu" style="display: none;">
+            <h3>Data Absensi</h3>
+            <div class="table-container">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID Karyawan</th>
+                            <th>Nama</th>
+                            <th>Tanggal</th>
+                            <th>Status Kehadiran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>001</td><td>Ahmad</td><td>2023-11-01</td><td>Hadir</td></tr>
+                        <tr><td>002</td><td>Budi</td><td>2023-11-01</td><td>Sakit</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Izin Table -->
+        <div id="izin" class="menu" style="display: none;">
+            <h3>Data Izin</h3>
+            <div class="table-container">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID Karyawan</th>
+                            <th>Nama</th>
+                            <th>Tanggal Izin</th>
+                            <th>Alasan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>002</td><td>Budi</td><td>2023-11-01</td><td>Sakit</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Lembur Table -->
+        <div id="lembur" class="menu" style="display:none">
+            <h3>Data Lembur</h3>
+            <div class="table-container">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID Karyawan</th>
+                            <th>Nama</th>
+                            <th>Tanggal</th>
+                            <th>Jam Lembur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>001</td><td>Ahmad</td><td>2023-10-25</td><td>3 Jam</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Bootstrap and JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function showMenu(menu) {
+        document.querySelectorAll('.menu').forEach(function(el) {
+            el.style.display = 'none';
+        });
+        
+        document.getElementById(menu).style.display = 'block';
+    }
+</script>
+
+
+</body></html>
